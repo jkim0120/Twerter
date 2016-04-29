@@ -13,6 +13,7 @@ client.connect(function(err, result) {
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var newUser = require('./routes/users/new');
 var user = require('./routes/user');
 
 var app = express();
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/user', user);
+app.use('/users/new', newUser);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
