@@ -13,4 +13,17 @@ router.get('/', function(req, res) {
   res.render('new_user');
 });
 
+var upsertUser = 'INSERT INTO twerter.users(username, password, email, full_name) VALUES (?, ?, ?, ?)';
+
+router.post('/', function(req, res) {
+  client.execute(upsertUser, [req.body.username, req.body.password, req.body.email, req.body.full_name],
+    function(err, result) {
+      if (err) {
+       res.status(500).send({msg: err});
+      } else {
+        res.redirect('/users');
+      }
+    });
+});
+
 module.exports = router;
