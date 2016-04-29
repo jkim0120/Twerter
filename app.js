@@ -12,10 +12,14 @@ client.connect(function(err, result) {
 });
 
 var routes = require('./routes/index');
+
 var users = require('./routes/users');
 var newUser = require('./routes/users/new');
 var user = require('./routes/user');
 var editUser = require('./routes/user/edit');
+
+var twerts = require('./routes/twerts');
+var newTwert = require('./routes/twerts/new');
 
 var app = express();
 
@@ -36,6 +40,9 @@ app.use('/users', users);
 app.use('/users/new', newUser);
 app.use('/user', user);
 app.use('/user/edit', editUser);
+
+app.use('/twerts', twerts);
+app.use('/twerts/new', newTwert);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
